@@ -25,8 +25,10 @@
 #include"Frame.h"
 #include"Map.h"
 
+#include<opencv2/imgproc/types_c.h>
 #include<opencv2/core/core.hpp>
 #include<mutex>
+#include<unistd.h>
 
 namespace ORB_SLAM2
 {
@@ -60,7 +62,7 @@ public:
     void SetBadFlag();
     bool isBad();
 
-    void Replace(MapPoint* pMP);    
+    void Replace(MapPoint* pMP);
     MapPoint* GetReplaced();
 
     void IncreaseVisible(int n=1);
@@ -105,14 +107,14 @@ public:
     // Variables used by loop closing
     long unsigned int mnLoopPointForKF;
     long unsigned int mnCorrectedByKF;
-    long unsigned int mnCorrectedReference;    
+    long unsigned int mnCorrectedReference;
     cv::Mat mPosGBA;
     long unsigned int mnBAGlobalForKF;
 
 
     static std::mutex mGlobalMutex;
 
-protected:    
+protected:
 
      // Position in absolute coordinates
      cv::Mat mWorldPos;
